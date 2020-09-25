@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:text="Quadratic equation: "
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+           >
+
+            <TextView
+                android:id="@+id/textView_numberA"
+                android:layout_width="123dp"
+                android:layout_height="67dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number|numberDecimal"
+                android:text="Number A:" />
+
+            <TextView
+                android:id="@+id/textView_numberB"
+                android:layout_width="123dp"
+                android:layout_height="69dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number|numberDecimal"
+                android:text="Number B:" />
+
+            <TextView
+                android:id="@+id/textView_numberC"
+                android:layout_width="123dp"
+                android:layout_height="69dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number|numberDecimal"
+                android:text="Number C:" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editText_numberA"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:text=""
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="416dp" />
+            <EditText
+                android:id="@+id/editText_numberB"
+                android:layout_width="wrap_content"
+                android:layout_height="69dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/editText_numberC"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:ems="10"
+                android:inputType="number|numberDecimal"
+                android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/button_calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="344dp" />
+
+    <TextView
+        android:id="@+id/textView_result"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:text="Result: " />
+
+</LinearLayout>
