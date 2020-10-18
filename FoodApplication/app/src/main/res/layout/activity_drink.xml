@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrinkActivity"
+    android:padding="100dp"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        ></TextView>
+    <CheckBox
+        android:id="@+id/cb_Tiger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tiger"
+        ></CheckBox>
+    <CheckBox
+        android:id="@+id/cb_Pessi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pessi"
+        ></CheckBox>
+    <CheckBox
+        android:id="@+id/cb_Heniken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Heniken"
+        ></CheckBox>
+    <CheckBox
+        android:id="@+id/cb_SaiGonDo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SaiGon Do"
+        ></CheckBox>
+    <Button
+        android:id="@+id/btn_DatMon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dat mon"
+        android:layout_gravity="center"
+        ></Button>
+
+</LinearLayout>

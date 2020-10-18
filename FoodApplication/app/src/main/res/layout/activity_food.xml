@@ -1,54 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodActivity">
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingVertical="50dp">
 
     <CheckBox
         android:id="@+id/cb_Pho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phở Hà Nội"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="38dp"></CheckBox>
+        android:text="Phở Hà Nội"></CheckBox>
 
     <CheckBox
         android:id="@+id/cb_Bun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bún Bò Huế"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="84dp"></CheckBox>
+        android:text="Bún Bò Huế"></CheckBox>
 
     <CheckBox
         android:id="@+id/cb_MiQuang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mì Quảng"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="138dp"></CheckBox>
+        android:text="Mì Quảng"></CheckBox>
 
     <CheckBox
         android:id="@+id/cb_HuTieu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hủ Tiếu Sài Gòn"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="188dp"></CheckBox>
+        android:text="Hủ Tiếu Sài Gòn"></CheckBox>
 
-    <Button
-        android:id="@+id/btn_Back"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="282dp"
-        tools:ignore="MissingConstraints"></Button>
+        android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_Ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="OK"></Button>
+
+        <Button
+            android:id="@+id/btn_Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="BACK"></Button>
+    </LinearLayout>
+
+</LinearLayout>
