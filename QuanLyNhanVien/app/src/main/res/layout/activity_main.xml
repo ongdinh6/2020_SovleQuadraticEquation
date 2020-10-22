@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="2">
+
+    <TableRow>
+
+        <TextView
+            android:layout_span="3"
+            android:background="#008000"
+            android:gravity="center"
+            android:text="Quản lý nhân viên"
+            android:textColor="#ffff"
+            android:textSize="25dp" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+
+            android:layout_span="1"
+            android:text="Mã NV:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edt_IDEmployee"
+            android:layout_span="2" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Tên NV:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edt_NameEmployee"
+            android:layout_weight="2" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Day_Num:\t\t\t\t"
+            android:textSize="20sp" />
+
+        <EditText
+            android:inputType="number"
+            android:id="@+id/edt_DayNum"
+            android:layout_span="2"
+            android:ems="10" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:text="Loại NV:"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/rg_TypeOfEmployee"
+            android:layout_span="2"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rdo_FullTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full time" />
+            <RadioButton
+                android:checked="true"
+                android:id="@+id/rdo_PartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Part time" />
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView />
+
+        <Button
+            android:id="@+id/btn_AddEmployee"
+            android:layout_span="1"
+            android:text="\t\t\t\t\tThêm Nhân Viên\t\t\t\t\t"
+            android:textAllCaps="false" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:background="#008000" />
+    </TableRow>
+
+    <TableRow>
+
+        <ListView
+            android:id="@+id/listView_EmployeeInfor"
+            android:layout_span="3">
+
+        </ListView>
+    </TableRow>
+
+</TableLayout>
+
