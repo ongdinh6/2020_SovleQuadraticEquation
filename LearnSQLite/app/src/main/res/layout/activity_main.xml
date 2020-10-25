@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_CreateDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Database"
+        android:textAllCaps="false" />
+
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_DeleteDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Database"
+        android:textAllCaps="false" />
+
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_CreateTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Table"
+        android:textAllCaps="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <Button
+            android:textSize="20sp"
+            android:id="@+id/btn_DeleteTB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete Table"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:textSize="20sp"
+            android:id="@+id/edt_TypeTableDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="Type Table to delete" />
+    </LinearLayout>
+
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_InsertRowTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert Row to tbllop"
+        android:textAllCaps="false" />
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_DeleteRowTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Row From tbllop"
+        android:textAllCaps="false" />
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_UpdateRowTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Row to tbllop"
+        android:textAllCaps="false" />
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_QueryTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Querying data tbllop"
+        android:textAllCaps="false" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <Button
+            android:textSize="20sp"
+            android:id="@+id/btn_InsertSt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Insert Student"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:textSize="20sp"
+            android:id="@+id/edt_TypeMaLop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="Type malop to\n reference" />
+    </LinearLayout>
+    <Button
+        android:textSize="20sp"
+        android:id="@+id/btn_QueryStByMaLop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Querying Sinhvien by malop"
+        android:textAllCaps="false" />
+</LinearLayout>
