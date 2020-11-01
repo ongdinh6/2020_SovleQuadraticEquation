@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff00"
+        android:gravity="center"
+        android:text="Update row from tbllop"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edt_Malop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input malop" />
+
+    <EditText
+        android:id="@+id/edt_Tenlop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input tenlop" />
+
+    <EditText
+        android:id="@+id/edt_Siso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input siso"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edt_ConditionMalop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input malop for update statement!" />
+
+    <TextView
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Leave it blank if not changed" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:layout_marginRight="30dp"
+             />
+
+        <Button
+            android:id="@+id/btn_Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Cancel" />
+    </LinearLayout>
+</LinearLayout>
