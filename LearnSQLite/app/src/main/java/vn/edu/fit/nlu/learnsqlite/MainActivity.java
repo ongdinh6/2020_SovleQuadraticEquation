@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class ButtonOnClickListener implements View.OnClickListener {
-        TextView txt;
+        TextView txt, tvLopInfo;
+        Student st;
 
         @Override
         public void onClick(View v) {
@@ -132,26 +134,26 @@ public class MainActivity extends AppCompatActivity {
                     });
                     break;
                 case R.id.btn_CreateTB:
-                    initData();
                     createTable();
                     break;
                 case R.id.btn_DeleteTB:
-                    initData();
                     edtTypeTB = MainActivity.this.findViewById(R.id.edt_TypeTableDelete);
                     String tbname = edtTypeTB.getText().toString();
                     deleteTable(tbname);
                     break;
                 case R.id.btn_InsertRowTB:
-                    initData();
                     insertRowTotbllop("DH17DT", "A", 50);
+                    insertRowTotbllop("DH17TD", "A", 50);
+                    insertRowTotbllop("DH17TH", "A", 50);
+                    insertRowTotbllop("DH17CT", "A", 50);
+                    insertRowTotbllop("DH17KC", "A", 50);
                     break;
 
-                case R.id.btn_DeleteRowTB: //is fail
+                case R.id.btn_DeleteRowTB:
                     dialog = new Dialog(MainActivity.this);
                     dialog.setContentView(R.layout.create_database_dialog);
                     txt = dialog.findViewById(R.id.tv_TitleButtonLayout);
                     txt.setText("DELETE ROW");
-                    dialog.show();
 
                     edtDBName = dialog.findViewById(R.id.edt_DBName);
                     edtDBName.setHint("Input malop to deleted!");
@@ -209,8 +211,49 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.btn_QueryTB:
+                    dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.querying_data_tbllop);
+                    dialog.setTitle("Thong tin cac lop");
+                    tvLopInfo = dialog.findViewById(R.id.tv_lopInfo);
+                    queryingDatatbllop();
+                    dialog.show();
                     break;
                 case R.id.btn_InsertSt:
+                    dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.create_database_dialog);
+                    txt = dialog.findViewById(R.id.tv_TitleButtonLayout);
+                    txt.setText("Insert Student");
+                    edtDBName = dialog.findViewById(R.id.edt_DBName);
+                    edtDBName.setHint("Fullname");
+                    edtTypeMaLop = findViewById(R.id.edt_TypeMaLop);
+                    createTBtblstudent();
+                    dialog.show();
+                    Button btnSaveStudentInfo = dialog.findViewById(R.id.btn_Save);
+                    btnSaveStudentInfo.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (edtDBName.getText().toString().equals("")) {
+                                Toast.makeText(MainActivity.this, "Please input fullname!", Toast.LENGTH_LONG).show();
+                            } else {
+                                if (edtTypeMaLop.getText().toString().equals("")) {
+                                    Toast.makeText(MainActivity.this, "Please input malop!", Toast.LENGTH_LONG).show();
+                                } else {
+                                    st = new Student(edtDBName.getText().toString(), edtTypeMaLop.getText().toString());
+                                    insertStudent(edtTypeMaLop.getText().toString());
+                                    dialog.dismiss();
+                                }
+                            }
+                        }
+                    });
+                    Button btnCancelInsert = dialog.findViewById(R.id.btn_Cancel);
+                    btnCancelInsert.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
                     break;
                 case R.id.btn_QueryStByMaLop:
                     break;
@@ -261,15 +304,14 @@ public class MainActivity extends AppCompatActivity {
             String tl = edtTenlop.getText().toString();
             String ss = edtSiso.getText().toString();
             String mss = "";
-//            String sql = "UPDATE tbllop AS t SET t.malop = \'" + (ml.equals("") ? condition : ml) + "\', t.tenlop = \'" + (tl.equals("") ? selectTenlop(condition) : tl) + "\', t.siso = " + (ss.equals("") ? mss = "Can not update!" : Integer.parseInt(ss));
-//            sql += " WHERE t.malop = \'" + condition + "\'";
-//            db.execSQL(sql);
-            if(tl.equals("") && ml.equals("") && ss.equals("")){
+
+            if (tl.equals("") && ml.equals("") && ss.equals("")) {
                 mss = "Can not update!";
-            }else{
-                db.execSQL("UPDATE tbllop SET tenlop = \'"+(tl.equals("") ? selectTenlop(condition) : tl)+"\', siso = "+(ss.equals("") ? selectSiso(condition) : Integer.parseInt(ss) )+" WHERE malop = \'"+condition+"\'");
+            } else {
+                mss = "Update is succeed!";
+                db.execSQL("UPDATE tbllop SET tenlop = \'" + (tl.equals("") ? selectTenlop(condition) : tl) + "\', siso = " + (ss.equals("") ? Integer.parseInt(String.valueOf(selectSiso(condition))) : Integer.parseInt(ss)) + " WHERE malop = \'" + condition + "\'");
             }
-            Toast.makeText(MainActivity.this, "ok" + mss, Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "" + mss, Toast.LENGTH_LONG).show();
         }
 
         Cursor selectTenlop(String condition) {
@@ -277,15 +319,43 @@ public class MainActivity extends AppCompatActivity {
             Cursor data = db.rawQuery(sql, null);
             return data;
         }
-        Cursor selectSiso(String condition){
+
+        Cursor selectSiso(String condition) {
             String sql = "SELECT siso FROM tbllop WHERE malop = \'" + condition + "\'";
             Cursor data = db.rawQuery(sql, null);
             return data;
         }
-        Cursor selectMalop(){
+
+        Cursor selectMalop() {
             String sql = "SELECT malop FROM tbllop ";
             Cursor data = db.rawQuery(sql, null);
             return data;
+        }
+
+        void queryingDatatbllop() {
+            String sql = "SELECT * FROM tbllop";
+            Cursor data = db.rawQuery(sql, null);
+            data.moveToFirst();
+
+            while (data.isAfterLast() == false) {
+                String malop = data.getString(0);
+                String tenlop = data.getString(1);
+                int siso = data.getInt(2);
+
+                String lop = malop + " - " + tenlop + " - " + siso + "\n";
+                tvLopInfo.append(lop);
+                data.moveToNext();
+            }
+        }
+        void createTBtblstudent(){
+            String sqlCreateTBStudent = "CREATE TABLE IF NOT EXISTS tblstudent (id int PRIMARY KEY autoincrement, fullname TEXT, malop TEXT, FOREIGN KEY (malop) REFERENCES tbllop(malop))";
+            db.execSQL(sqlCreateTBStudent);
+
+        }
+        void insertStudent(String malop) {
+            String sqlInsertStudentIntblstudent = "INSERT INTO tblstudent(id, fullname, malop) VALUES (" + st.getId() + ", \'" + st.getFullname() + "\', \'" + malop + "\')";
+            db.execSQL(sqlInsertStudentIntblstudent);
+            Toast.makeText(MainActivity.this, "Insert Student is succeed!", Toast.LENGTH_LONG).show();
         }
     }
 
