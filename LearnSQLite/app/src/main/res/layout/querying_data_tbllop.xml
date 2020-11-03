@@ -6,6 +6,7 @@
     android:background="#F6EEEE"
     android:padding="10dp">
     <TextView
+        android:id="@+id/tv_Thongtin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thong tin cac lop"

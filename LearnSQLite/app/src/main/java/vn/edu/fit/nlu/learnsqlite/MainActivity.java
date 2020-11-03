@@ -256,6 +256,19 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.btn_QueryStByMaLop:
+                    dialog = new Dialog(MainActivity.this);
+                    dialog.setContentView(R.layout.querying_data_tbllop);
+                    TextView tvTT = dialog.findViewById(R.id.tv_Thongtin);
+                    tvTT.setText("Thong tin sinh vien co ma lop");
+                    tvLopInfo = dialog.findViewById(R.id.tv_lopInfo);
+
+                    if(edtTypeMaLop.getText().toString().equals("")){
+                        Toast.makeText(MainActivity.this, "Please input malop at EditText Type malop !", Toast.LENGTH_LONG).show();
+                    }else{
+                        queryingStudentByMalop(edtTypeMaLop.getText().toString());
+                    }
+
+                    dialog.show();
                     break;
 
                 default:
@@ -348,14 +361,31 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         void createTBtblstudent(){
-            String sqlCreateTBStudent = "CREATE TABLE IF NOT EXISTS tblstudent (id int PRIMARY KEY autoincrement, fullname TEXT, malop TEXT, FOREIGN KEY (malop) REFERENCES tbllop(malop))";
+            String sqlCreateTBStudent = "CREATE TABLE IF NOT EXISTS tblstudent (id integer PRIMARY KEY autoincrement, fullname TEXT, malop TEXT, FOREIGN KEY (malop) REFERENCES tbllop(malop))";
             db.execSQL(sqlCreateTBStudent);
 
         }
         void insertStudent(String malop) {
-            String sqlInsertStudentIntblstudent = "INSERT INTO tblstudent(id, fullname, malop) VALUES (" + st.getId() + ", \'" + st.getFullname() + "\', \'" + malop + "\')";
+            String sqlInsertStudentIntblstudent = "INSERT INTO tblstudent(fullname, malop) VALUES ( \'" + st.getFullname() + "\', \'" + malop + "\')";
             db.execSQL(sqlInsertStudentIntblstudent);
             Toast.makeText(MainActivity.this, "Insert Student is succeed!", Toast.LENGTH_LONG).show();
+        }
+
+        void queryingStudentByMalop(String malop){
+            String sql = "SELECT * FROM tblstudent WHERE malop = \'"+malop+"\'";
+
+            Cursor data = db.rawQuery(sql, null);
+            data.moveToFirst();
+            while(data.isAfterLast() == false){
+                int id = data.getInt(0);
+                String fullname = data.getString(1);
+                String ml = data.getString(2);
+
+                Student st = new Student(id, fullname, ml);
+                tvLopInfo.setText(st.toString());
+                data.moveToNext();
+            }
+
         }
     }
 
